@@ -29,7 +29,9 @@ class Pixelart:
 # Save a new pixel art object function, saves it as a binary file.
 # If the filename already exist it just overwrites the file, might add a warning in the future
 def addNewPixelArt(name, length, width, array):
-    newPixelArt = Pixelart(name, length, width, array)
+    emptyArray = []
+    emptyArray.append(array)
+    newPixelArt = Pixelart(name, length, width, emptyArray)
     with open((name + '.pkl'), 'wb') as save_mcpa:
         pickle.dump(newPixelArt, save_mcpa)
 
@@ -57,8 +59,10 @@ if conVar == "yes":
             pixelArtLoaded = pickle.load(load_mcpa)
             print(pixelArtLoaded)
 
-            s = pixelArtLoaded.get_size()
-            print(s)
+            # Debug Array
+            s = pixelArtLoaded.get_array()
+            print("\n")
+            print(str(s[0][1]))
     except:
         print("\nNo saved Pixel Art found!")
 else:

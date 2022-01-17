@@ -5,7 +5,8 @@ Quick put together of a save load system that saves names, sizes, and arrays int
 Instructions
 ------------------
 
-If you want to add a pixel art save, tell it how many you want to add, then answer the following inputs. At the prompt copy and paste full 2d array in the format example [[0,0,0,0],[1,1,1,1]] 
+If you want to add a pixel art save, tell it how many you want to add, then answer the following inputs. At the prompt copy and paste full 2d array in the
+format example --- > [[0,0,0,0],[1,1,1,1], ....] 
 
 If you want to load a pixel art you can either answer yes at the end of the prompts if you add, or you can answer 0 to saving a pixel art and it will directly ask you to load one. *I should just ask if you want to load or save in the beginning.
 

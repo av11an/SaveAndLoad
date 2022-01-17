@@ -29,9 +29,7 @@ class Pixelart:
 # Save a new pixel art object function, saves it as a binary file.
 # If the filename already exist it just overwrites the file, might add a warning in the future
 def addNewPixelArt(name, length, width, array):
-    emptyArray = []
-    emptyArray.append(array)
-    newPixelArt = Pixelart(name, length, width, emptyArray)
+    newPixelArt = Pixelart(name, length, width, array)
     with open((name + '.pkl'), 'wb') as save_mcpa:
         pickle.dump(newPixelArt, save_mcpa)
 
@@ -39,13 +37,18 @@ def addNewPixelArt(name, length, width, array):
 # main
 n = int(input("\nHow many Pixel Arts will you be adding?: "))
 
+
+emptyArray = []
 for i in range(n):
     name = input("\nName of Pixel Art [WARNING: If you name the pixel art the same name as one previously saved it will overwrite that pixel art!]: ")
     l = int(input("Length of Pixel Art: "))
     w = int(input("Width of Pixel Art: "))
-    ar = input("Copy and Paste full 2D array: ")
-
-    addNewPixelArt(name, l, w, ar)
+    for x in range(0, w):
+        b = list(map(int, input("Paste row #"+str(x+1)+": ").split(', ')))
+        print(b)
+        emptyArray.append(b)
+    addNewPixelArt(name, l, w, emptyArray)
+    emptyArray = []
 
 conVar = input("\nDo you want to load a Pixel Art? input [yes] or [no]: ")
 
@@ -62,7 +65,7 @@ if conVar == "yes":
             # Debug Array
             s = pixelArtLoaded.get_array()
             print("\n")
-            print(str(s[0][1]))
+            print(str(s[0][0]))
     except:
         print("\nNo saved Pixel Art found!")
 else:
